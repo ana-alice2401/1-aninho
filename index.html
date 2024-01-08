@@ -39,6 +39,7 @@
       </div>
     </div>
 
+    <div class="confirmation hidden">Presença confirmada!!!</div>
     <script>
         const modal = document.querySelector('.modal')
         const openModal = () => {
@@ -80,11 +81,25 @@
                 if (!response.ok) {
                     throw new Error('Erro na requisição');
                 }
-                
+
+                for (let i = form.length - 1; i > 0; i--) {
+                    form[i].parentNode.removeChild(form[i]);
+                }
+
+                form[0].value = '';
                 const responseData = await response.json();
                 console.log('Resposta:', responseData);
             } catch (error) { console.error('Erro:', error) }
             closeModal()
+
+            const confirmation = document.querySelector('.confirmation');
+            confirmation.classList.remove('hidden');
+            confirmation.classList.add('show');
+
+            setTimeout(() => {
+                confirmation.classList.remove('show');
+                confirmation.classList.add('hidden');
+            }, 3000);
         }
     </script>
 </body>
