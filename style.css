@@ -18,10 +18,8 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 50vw;
+    width: 70%;
     background-image: url('O_GRANDE_CIRCO_APRESENTA....jpg');
-    background-size: cover;
-    /* background-size: 50%; */
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -39,8 +37,37 @@ body {
 }
 
 .container .buttons button {
-    padding: 50px;
     border-radius: 100vh;
-
     background-color: #B4E6E3;
+}
+
+
+@media (max-width: 424px) {
+    .container {
+        width: 100%;
+        background-size: cover;
+
+    }
+}
+
+
+@media (min-width: 425px) and (max-width: 767px) {
+    .container {
+        background-size: 90%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        background-size: 50%;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .container {
+        width: 70%;
+        background-size: 40%;
+    }
 }
