@@ -15,30 +15,33 @@ body {
 
 .container {
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 100vh;
     width: 70%;
-    background-image: url('O_GRANDE_CIRCO_APRESENTA....jpg');
+    background-image: url('O_GRANDE_CIRCO_APRESENTA.jpg');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .container .buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
     align-self: flex-end;
-    gap: 75px;
     flex-direction: row;
-    margin-right: 105px;
-    margin-bottom: 7%;
-
+    margin-bottom: 2%;
 }
 
-.container .buttons button {
+.container .buttons button,
+.container .buttons a {
     border-radius: 100vh;
     background-color: #B4E6E3;
+}
+
+.container .buttons button:hover {
+    cursor: pointer;
+}
+
+.container .buttons img {
+    padding: 10px;
 }
 
 
@@ -46,28 +49,47 @@ body {
     .container {
         width: 100%;
         background-size: cover;
+    }
 
+
+    .container .buttons {
+        gap: 225px;
     }
 }
 
 
 @media (min-width: 425px) and (max-width: 767px) {
     .container {
-        background-size: 90%;
+        width: 90%;
+        background-size: cover;
+    }
+
+
+    .container .buttons {
+        gap: 250px;
     }
 }
 
 
 @media (min-width: 768px) and (max-width: 1023px) {
     .container {
-        background-size: 50%;
+        background-size: 70%;
+    }
+
+
+    .container .buttons {
+        gap: 270px;
     }
 }
 
 
 @media (min-width: 1024px) {
     .container {
-        width: 70%;
-        background-size: 40%;
+        background-size: 48%;
+    }
+
+
+    .container .buttons {
+        gap: 250px;
     }
 }
