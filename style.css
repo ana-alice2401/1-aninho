@@ -18,6 +18,7 @@ body {
     justify-content: center;
     height: 100vh;
     width: 70%;
+    margin-bottom: 50px;
     background-image: url('O_GRANDE_CIRCO_APRESENTA.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -25,20 +26,23 @@ body {
 
 .container .buttons {
     display: flex;
-    align-self: flex-end;
-    flex-direction: row;
-    margin-bottom: 2%;
-}
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
 
-.container .buttons button,
-.container .buttons a {
-    border-radius: 100vh;
     background-color: #B4E6E3;
 }
 
 .container .buttons button:hover {
     cursor: pointer;
 }
+
+.container .buttons .check {
+    background-color: greenyellow;
+}
+
 
 .container .buttons img {
     padding: 10px;
@@ -50,11 +54,6 @@ body {
         width: 100%;
         background-size: cover;
     }
-
-
-    .container .buttons {
-        gap: 225px;
-    }
 }
 
 
@@ -63,11 +62,6 @@ body {
         width: 90%;
         background-size: cover;
     }
-
-
-    .container .buttons {
-        gap: 250px;
-    }
 }
 
 
@@ -75,21 +69,11 @@ body {
     .container {
         background-size: 70%;
     }
-
-
-    .container .buttons {
-        gap: 270px;
-    }
 }
 
 
 @media (min-width: 1024px) {
     .container {
         background-size: 48%;
-    }
-
-
-    .container .buttons {
-        gap: 250px;
     }
 }
