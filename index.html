@@ -17,14 +17,70 @@
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAs1JREFUSEvFlU+IVmUUxp/nnPth+WdkdokjYtRQFJRK6SYRIS2ENpXQQNAQBpUZEcyiNga1CN3YqAiCFOhCqMWADOpk0URQQ4NuyhBsUFyZMqBQMXPf88gbd+Cbb757bSNzV5f7nnt+9zznOecS9/nifc6PxQdI2hgRuyRtIdkPIJH8SdIvZnaW5IUmFWorkLRG0jFJOwDckXSB5CUA/0paT/IpACsBHDCzj0nOdAN1BUjqj4jvASyR9IG7nyCpzgQppfcyAMCfZvYKyd86YxYAJD0UEb9mKcxsG8krTRJIejIiRgCYmT1B8u/2+AWAiBiV9KyZPUNyStJqACtI/lEHqiCTAI67+9u1AEnPRcS4pDeLojgu6fGqmr/MbF03meaSpZQ+AvBZRGxvtVpjc8/nVZBSGgYwaGa9JGdTSkMAPs/BEbGj1Wqda6jiwYi4Q3LEzF6uA1wkec3MXsoBKaV3ABzO95IGi6L4sqkfKaWL+dzdn64DXAcw6u5vVUlXRcQUgGkzW0OyvAfgKIABd++pA1wGMOnur7Vpm634BYAjZrbnHn3Icr7v7g90BUTEmYjoLYpiU/uXppROAdiV9SWZgUtTSlmu7JqvSU5Xkua4De7+aF0FnwIYMrM+kjfmgiR5RBwE8C6A28B/O2xFdb7f3YckWUTcBPCNu+/uCpD0cETkwfrE3fd16j07O/u8mWW5HqvOIiJeyLYsy3KA5MlOty0YtMoJyd03NlhyQ1mWPUVRXK2GcW1ETEi6VBTF1qZBWxYRWc9hd/+wyTFt8uXk3wLoqab/Wi2gLMudJE9Lej3PFsntAH42s69I/tP+oqS+iHgDwN48JtXeal52KaVDVSPncuUXHgEwQ/IHSXkmlHcVyc3VrPzo7oN1S3FeDyJiTNIVSd+5+3mStyQtTym9SvJFANm+vZJ+JzluZtmiE01SLv4v8/80elEruAsCVXAoRXvS4AAAAABJRU5ErkJggg=="/>
             </a>
 
-            <button class="check">
+            <button class="check" onclick="openModal()">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPxJREFUSEvtk0tKA1EQRc8FswYVhYiuQiTRdbiBQBbgNhw5ceZS/OEmEjSQgFnFDRVaaB4++3Viz7pm3YN7qs6rEh2XOs6nBzQa7hVtFdk+BG4l3afO9lZk+xh4BS6AiaTHOmQvgO0T4AU4B2bASNL3vwCq8HdgmAsP0E4TJOFfwGXa+c8UWYDtO+BJ0ro+cqJlDtxIWuYO4leA7SnwAETAtaRVtS2nwFul5RMY/xWeVWT7CPgAzoAFcAUcAM9VeGiJB812XqIouo3A2JDodgDEv6LOGwE1JbHjMUlUcedFgAQSn0VaWt+B7ZjAkuI9WtVOd9CG0AMabXWuaAOgI1EZUcrQDgAAAABJRU5ErkJggg=="/>
             </button>
         </div>
     </div>
 
-    <script>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="form-buttons">
+                <span class="close" onclick="closeModal()">x</span>
+            </div>
+            <form class="form">
+                <input type="text" placeholder="Nome" />
+            </form>
+            <div class="form-buttons">
+                <button class="plus-button" onclick="addInput()">&#43;</button>
+                <button class="check-btn" onclick="request()">&#10003;</button>
+            </div>
+        </div>
+      </div>
+    </div>
 
+    <script>
+        const modal = document.querySelector('.modal')
+        const openModal = () => {
+            modal.style.display = 'block'
+        }
+
+        const closeModal = () => {
+            modal.style.display = 'none'
+        }
+
+        const addInput = () => {
+            const form = modal.querySelector('form');
+            form.innerHTML += `<input type="text" placeholder="Nome" />`
+        }
+
+        const request = async () => {
+            const form = document.querySelectorAll('.form input')
+            const formArray = Array.from(form);
+
+            const data = formArray.map((input) => {
+                return {'name': input.value}
+            })
+
+
+            try {
+                const response = await fetch('https://api-u36b.onrender.com/invite', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                
+                if (!response.ok) {
+                    throw new Error('Erro na requisição');
+                }
+                
+                const responseData = await response.json();
+                console.log('Resposta:', responseData);
+            } catch (error) { console.error('Erro:', error) }
+            // closeModal()
+        }
     </script>
 </body>
 </html>

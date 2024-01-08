@@ -40,7 +40,7 @@ body {
 }
 
 .container .buttons .check {
-    background-color: greenyellow;
+    background-color: #FAE28C;
 }
 
 
@@ -77,3 +77,72 @@ body {
         background-size: 48%;
     }
 }
+
+
+.modal {
+    display: block;
+    /* display: none; */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.modal .modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.modal-content input[type="text"] {
+    width: 100%; 
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+.modal-content input[type="text"]:hover,
+.modal-content input[type="text"]:focus {
+    border-color: #666; 
+}
+
+
+.modal-content .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    font-size: 16px;
+}
+
+.modal-content button {
+    padding: 10px 20px; 
+    margin-top: 10px;
+    color: white;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+}  
+
+.modal-content .plus-button {
+    background-color: blue;
+  }
+  
+.modal-content .check-btn {
+    background-color: #4CAF50;
+}
+  
