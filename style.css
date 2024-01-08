@@ -20,7 +20,8 @@ body {
     height: 100vh;
     width: 50vw;
     background-image: url('O_GRANDE_CIRCO_APRESENTA....jpg');
-    background-size: 50%;
+    background-size: cover;
+    /* background-size: 50%; */
     background-repeat: no-repeat;
     background-position: center;
 }
